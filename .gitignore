@@ -1,0 +1,15 @@
+data/raw/
+
+warehouse.duckdb
+warehouse.duckdb.wal
+
+mlruns/
+mlflow.db
+
+.venv/
+
+__pycache__/
+*.pyc
+
+dbt_project/target/
+dbt_project/logs/
