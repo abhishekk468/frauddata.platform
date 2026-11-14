@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: fct_features
+    columns:
+      - name: txn_id
+        tests: [unique, not_null]
+      - name: drain_ratio
+        tests: [not_null]
+  - name: fct_threshold_tradeoff
+    columns:
+      - name: amount_threshold
+        tests: [unique, not_null]
