@@ -1,0 +1,11 @@
+Day 2 exploration
+
+- Total rows: 6,362,620
+- Steps range from 1 to 743.
+- Amounts range from 0.00 to 92,445,516.64.
+- Unique senders: 6,353,307, which is close to the total row count.
+- Unique receivers: 2,722,362.
+- Fraud exists only in CASH_OUT and TRANSFER:
+  - CASH_OUT: 4,116 fraudulent transactions
+  - TRANSFER: 4,097 fraudulent transactions
+- Re-running day 3 leaves the total at 6,362,620, confirming idempotent loading.
