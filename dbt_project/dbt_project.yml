@@ -1,0 +1,13 @@
+name: fraud_platform
+version: "1.0.0"
+config-version: 2
+profile: fraud_platform
+model-paths: ["models"]
+test-paths: ["tests"]
+
+models:
+  fraud_platform:
+    staging:
+      +materialized: table
+    marts:
+      +materialized: table

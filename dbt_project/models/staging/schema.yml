@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: stg_transactions
+    columns:
+      - name: txn_id
+        tests: [unique, not_null]
+      - name: amount
+        tests: [not_null]
+      - name: txn_type
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [PAYMENT, TRANSFER, CASH_OUT, DEBIT, CASH_IN]
+      - name: is_fraud
+        tests: [not_null]
