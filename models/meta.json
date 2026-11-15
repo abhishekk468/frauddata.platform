@@ -1,0 +1,1 @@
+{"features": ["amount", "is_transfer", "hour_of_day", "oldbalance_org", "oldbalance_dest", "drain_ratio", "drains_account", "dest_balance_zero", "dest_prev_txn_count"], "threshold": 0.012823909175822346}
