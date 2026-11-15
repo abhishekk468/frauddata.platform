@@ -92,8 +92,6 @@ CASH_OUT.
 
 - [Dashboard](docs/screenshots/dashboard.png)
 - [FastAPI documentation](https://fraud-api-jdnp.onrender.com/docs)
-- MLflow comparison and Docker service status screenshots are planned artifacts
-  from the local development workflow.
 
 ## Dataset citation
 
