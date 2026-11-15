@@ -4,7 +4,9 @@ An end-to-end fraud analytics platform built on the PaySim mobile-money
 simulation: idempotent ingestion, DuckDB, dbt, business analysis, machine
 learning, FastAPI, Streamlit, and Docker.
 
-Public API and dashboard URLs: not deployed yet.
+Public API: https://fraud-api-jdnp.onrender.com
+API docs: https://fraud-api-jdnp.onrender.com/docs
+Dashboard: https://projct-abhi.streamlit.app/
 
 ## Architecture
 
@@ -31,8 +33,11 @@ flowchart LR
 | XGBoost | 0.9952 |
 
 At the validation-chosen threshold, precision was 0.9253 and recall was
-0.9971. Simulated cost was 406,405.0800 with the model versus
-2,340,743,287.2300 with no model.
+0.9971. In simulated PaySim currency units, cost was about 406 thousand
+with the model versus about 2.34 billion with no model: a 99.98% reduction
+in simulated loss. PaySim does not define a real-world currency unit.
+This unusually large reduction is expected because PaySim fraud follows
+simple account-draining rules that are highly separable.
 
 Assumptions: each flagged transaction costs 5 for manual review; missed fraud
 costs its transaction amount.
@@ -43,9 +48,11 @@ See [docs/findings.md](docs/findings.md) for the four measured recommendations.
 
 ## Leakage
 
-Post-transaction balances increased XGBoost PR-AUC from 0.9952 to 0.9960, but
-they were excluded because they are unavailable when a transaction must be
-approved. Full results are in [docs/results.md](docs/results.md).
+Post-transaction balances increased XGBoost PR-AUC from 0.9952 to 0.9960.
+That 0.0008 difference is small and should not be treated as meaningful.
+The clean features already carry the main signal, and the post-transaction
+balances were excluded because they are unavailable when a transaction must
+be approved. Full results are in [docs/results.md](docs/results.md).
 
 ## Data quality
 
@@ -65,7 +72,8 @@ CASH_OUT.
    ```bash
    python src/run_pipeline.py
    ```
-   The runner will reach training once `src/train.py` is available.
+   This runner executes ingestion, dbt build, dashboard export, and model
+   training as four ordered stages.
 5. Start the local services:
    ```bash
    docker compose up -d --build
@@ -83,6 +91,9 @@ CASH_OUT.
 ## Screenshots
 
 - [Dashboard](docs/screenshots/dashboard.png)
+- [FastAPI documentation](https://fraud-api-jdnp.onrender.com/docs)
+- MLflow comparison and Docker service status screenshots are planned artifacts
+  from the local development workflow.
 
 ## Dataset citation
 

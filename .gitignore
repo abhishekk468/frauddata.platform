@@ -1,5 +1,7 @@
 data/raw/
 
+.DS_Store
+
 warehouse.duckdb
 warehouse.duckdb.wal
 
